@@ -1,4 +1,9 @@
-module.exports = [
+const alt_emission_avgs = {
+  "BICYCLE": 0,
+  "WALK": 0,
+};
+
+const emission_data = [
   {
     "Make": "Tesla",
     "Model": "X",
@@ -103446,3 +103451,5 @@ module.exports = [
     "CO2_avg": 248
   }
 ]
+
+module.exports = {emission_data, alt_emission_avgs};
