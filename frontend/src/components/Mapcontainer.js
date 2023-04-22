@@ -1,19 +1,30 @@
 import { useState, useEffect } from 'react';
 
-import {Map, GoogleApiWrapper, Marker} from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+
+import "../styles/Mapcontainer.css"
 
 export function Mapcontainer(props) {
+    const style = {
+        display: 'block',
+        margin: 'auto',
+        width: '100%', 
+        height: '100%',
+    }
+
+    const containerStyle = {
+        position: 'relative',
+        top: '30px',
+        width: '100%',
+        height: '30%'
+    }
 
     const [defaultCenter, setdefaultCenter] = useState({lat: 0, lng: 0});
-    const [isStart, setisStart] = useState(true);
-    const [startPos, setStartPos] = useState({lat: 0, lng: 0});
-    const [endPos, setEndPos] = useState({lat: 0, lng: 0});
 
     useEffect( () => {
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
                 const coords = pos.coords;
-                console.log(coords)
                 setdefaultCenter({
                     lat: coords.latitude,
                     lng: coords.longitude
@@ -22,47 +33,29 @@ export function Mapcontainer(props) {
         }
     }, []);
 
-    const handleSubmit = () => {
-        ljson = JSON.stringify(startPos)
-        rjson = JSON.stringify(endPos)
-        fetch(`/rankData?lat={ljson}&lng={rjson}`).then(
-            (res) => res.json()
-        )
-    }
-
-    const handleClick = (mapProps, map, clickEvent) => {
-        let lat = clickEvent.latLng.lat()
-        let lng = clickEvent.latLng.lng()
-        if(isStart) {
-            setStartPos({lat:lat, lng:lng})
-        } else {
-            setEndPos({lat:lat, lng:lng})
-        }
-        setisStart(!isStart);
-    }
 
     return (
-        <>
+        <div className='mapcontainer'>
         <Map
-            style={{width: 500, height: 500, position: 'absolute'}}
+            style={style}
+            containerStyle={containerStyle}
             google={props.google}
-            onClick={handleClick}
+            onClick={props.handleClick}
             center={defaultCenter}
             centerAroundCurrentLocation
         >
             <Marker
                 title = "Start"
                 name = "start"
-                position={startPos}
+                position={props.startPos}
             />
             <Marker
                 title = "End"
                 name = "end"
-                position={endPos}
+                position={props.endPos}
             />
         </Map>
-        <button onSubmit={handleSubmit}></button>
-        </>
+        </div>
     )
 }
 
