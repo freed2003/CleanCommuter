@@ -12,19 +12,21 @@ const transformer = (data) => {
   let sum = 0;
   // sum += coefficientMatrix[0] * data.price;
   sum += coefficientMatrix[1] * data.CO2_avg * data.distance;
-  // sum += coefficientMatrix[2] * data.time;
+  sum += coefficientMatrix[2] * (data.travel_time ** 2);
   return sum;
 };
 
-const append_maps_data = (entry, distance) => {
+const append_maps_data = (entry, distance, travel_time) => {
+  /* Request google maps data for each mode of travel, store and return best mode of travel for google maps display */
   entry.distance = distance;
+  entry.travel_time = travel_time;
 }
 
 /* Accepts input data, and ranks transformer(data) in ascending order */
-const rankData = (distance) => {
+const rankData = (distance, travel_time) => {
   const res = [];
   for (let entry of emission_data) {
-    append_maps_data(entry, distance);
+    append_maps_data(entry, distance, travel_time);
     const metric = transformer(entry);
     res.push([metric, entry]);
   }
