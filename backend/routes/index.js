@@ -5,21 +5,29 @@ let router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  return res.json({ });
+  // return res.sendFile('../build/index.html');
+  return res.send('index');
 });
 
-router.post('/rankData', (req, res, next) => {
+router.get('/rankData', async (req, res, next) => {
   let { start, end } = req.query;
 
   try {
-    start = json.parse(start);
-    end = json.parse(end);
+    start = JSON.parse(start);
+    end = JSON.parse(end);
   } catch (e) {
-    return res.status(400).send('Start and end required');
+    e = new Error('Start and end required');
+    e.status = 400;
+    next(e);
   }
 
-  const ranked = dataController.rankData(start, end);
-  return res.json(ranked.slice(0, 15));
+  try {
+    const ranked = await dataController.rankData(start, end);
+    return res.json(ranked.slice(0, 15));
+  } catch (err) {
+    console.log(err);
+    next(new Error('failed to rank data'));
+  }
 });
 
 module.exports = router;
