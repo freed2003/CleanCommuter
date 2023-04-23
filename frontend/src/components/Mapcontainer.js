@@ -6,15 +6,14 @@ import "../styles/Mapcontainer.css"
 
 export function Mapcontainer(props) {
     const style = {
-        display: 'block',
-        margin: 'auto',
         width: '100%', 
-        height: '100%',
+        height: '30%',
+        margin: 'auto'
     }
 
     const containerStyle = {
-        position: 'relative',
-        top: '30px',
+        display: 'flex',
+        position: 'static',
         width: '100%',
         height: '30%'
     }

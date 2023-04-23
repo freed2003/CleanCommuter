@@ -36,8 +36,8 @@ export default function Home() {
             <div className='map'>
                 <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos}/>
             </div>
-            <div className='button'>
-                <button onClick={handleButton}>Click here to submit</button>
+            <div>
+                <button className='button' onClick={handleButton}>Click here to submit</button>
             </div>
         </div>
     )
