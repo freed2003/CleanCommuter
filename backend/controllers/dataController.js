@@ -42,7 +42,7 @@ const rankData = async (start, end) => {
   /* individual car data */
   emission_data.forEach(car => {
     const metric = transformer(
-      0,                    // USD
+      car.MSRP,             // USD
       car.CO2_avg,          // g/km
       car_data.distance,    // km
       car_data.travel_time, // minutes

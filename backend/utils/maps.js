@@ -15,14 +15,13 @@ const getMapsData = async (start, end) => {
   const responses = await Promise.all(requests);
   const json = responses.map((response => response.json()));
   const data = await Promise.all(json);
-  console.log(data);
 
   let ret = [];
-  data.forEach(method => {
+  data.forEach((method, i) => {
     ret.push({
-      method: method,
-      distance: data.routes[0].legs.distance.value / 1000, // distance in km
-      travel_time: data.routes[0].legs.duration.value / 60, // time in minutes
+      method: methods[i],
+      distance: method.routes[0].legs[0].distance.value / 1000, // distance in km
+      travel_time: method.routes[0].legs[0].duration.value / 60, // time in minutes
     });
   });
 
