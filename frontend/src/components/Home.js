@@ -52,14 +52,15 @@ export default function Home() {
       <div className="car">
         <h className="car-title">
           Vehicle model
-        </h>
-        <Autocomplete
+          <Autocomplete
           disablePortal
           id="model-selector"
           options={models}
           sx={{ width: 300 }}
           renderInput={(params) => <TextField {...params} model='model' />}
         />
+        </h>
+        
       </div>
       <div className='map'>
         <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} />
