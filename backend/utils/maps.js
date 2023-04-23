@@ -22,7 +22,7 @@ const getMapsData = async (start, end) => {
       method: methods[i],
       distance: method.routes[0].legs[0].distance.value / 1000, // distance in km
       travel_time: method.routes[0].legs[0].duration.value / 60, // time in minutes
-      route: method,
+      // route: method,
     });
   });
 
