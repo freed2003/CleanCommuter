@@ -21,9 +21,10 @@ export default function Home() {
       let ljson = JSON.stringify(startPos)
       let rjson = JSON.stringify(endPos)
       fetch(`/rankData?start=${ljson}&end=${rjson}`)
-      .then( res => res.json())
-      .then( data => {
-          setRoute(data.best_method)
+      .then(res => res.json())
+      .then(data => {
+          setRoute(data.best_method);
+          setResults(data.scores);
       });
   }
   /* fetch list of car models */
@@ -69,10 +70,8 @@ export default function Home() {
         </h>
         <img className="image" src={logo} alt="Logo" />
       </div>
-      {/* <div className='map'> */}
+      <div className='map'>
           <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
-      {/* </div> */}
-      <div>
           <button className='button' onClick={handleButton}>Click here to submit</button>
       </div>
       {results != undefined && <Results results={results} />}
