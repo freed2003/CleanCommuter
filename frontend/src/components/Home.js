@@ -35,16 +35,22 @@ export default function Home() {
       });
   }, []);
 
-  const handleClick = (mapProps, map, clickEvent) => {
-    let lat = clickEvent.latLng.lat()
-    let lng = clickEvent.latLng.lng()
-    if (isStart) {
-      setStartPos({ lat: lat, lng: lng })
-    } else {
-      setEndPos({ lat: lat, lng: lng })
-    }
-    setisStart(!isStart);
-  }
+  const handleClick = (clickEvent) => {
+    setisStart((prevIsStart) => {
+      const newIsStart = !prevIsStart;
+      let lat = clickEvent.latLng.lat();
+      let lng = clickEvent.latLng.lng();
+  
+      if (newIsStart) {
+        setStartPos({ lat: lat, lng: lng });
+      } else {
+        setEndPos({ lat: lat, lng: lng });
+      }
+  
+      return newIsStart;
+    });
+  };
+  
 
   return (
     <div className="home">
