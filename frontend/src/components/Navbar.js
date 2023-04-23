@@ -1,19 +1,22 @@
 import "../styles/Navbar.css";
+import logo from './../images/CCLogo.svg'
 
 export default function Navbar() {
   return (
     <nav className='navbar'>
+      <img className="brand-logo" src={logo} alt="Logo"/>
       <input
         className='menutoggle'
         id="menu-toggle"
         type="checkbox"
-      ></input>
+      >
+      </input>
       <label className='menucontainer' htmlFor="menu-toggle">
         <div className='menubutton'></div>
       </label>
       <ul>
         <li>
-          <a href="/login">login</a>
+          <a href="/about">ABOUT</a>
         </li>
       </ul>
     </nav>

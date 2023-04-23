@@ -26,7 +26,7 @@ const rankData = async (start, end) => {
     if (transport_mode.method === 'driving')
       return;
 
-    transport_mode.MSRP = alt_price_averages[transport_mode.method];
+    transport_mode.MSRP = alt_price_averages[transport_mode.method] * transport_mode.distance;
     transport_mode.CO2_total = alt_emission_avgs[transport_mode.method] * transport_mode.distance;
     const metric = transformer(
       transport_mode.MSRP,

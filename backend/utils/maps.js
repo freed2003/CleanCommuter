@@ -6,7 +6,7 @@ const getMapsData = async (start, end) => {
   const origin = `origin=${end.lat},${end.lng}`;
   const key = `key=${process.env.MAPS_API_KEY}`;
   // const methods = ['driving', 'walking', 'bicycling', 'transit'];
-  const methods = ['driving', 'walking', 'bicycling'];
+  const methods = ['driving', 'walking', 'bicycling', 'transit'];
 
   /* request each method in parallel */
   const requests = methods.map(method => fetch(

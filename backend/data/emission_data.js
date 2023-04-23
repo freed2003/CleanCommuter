@@ -1,11 +1,13 @@
 const alt_emission_avgs = {
   "bicycling": 0,
   "walking": 0,
+  "transit": 60, // g/km
 };
 
 const alt_price_averages = {
   "bicycling": 0,
   "walking": 0,
+  "transit": 0.15, // $ / km
 }
 
 const emission_data = [
