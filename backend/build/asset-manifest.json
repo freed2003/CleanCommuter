@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1409b625.css",
+    "main.js": "/static/js/main.8e8ba210.js",
+    "static/media/car.png": "/static/media/car.cea390fee55ccd9885de.png",
+    "static/media/banner.png": "/static/media/banner.99ab5a9b37bed6500f91.png",
+    "static/media/Clean_Commuters.svg": "/static/media/Clean_Commuters.dd3d18706dd6ed246e741cf79975c369.svg",
+    "index.html": "/index.html",
+    "main.1409b625.css.map": "/static/css/main.1409b625.css.map",
+    "main.8e8ba210.js.map": "/static/js/main.8e8ba210.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1409b625.css",
+    "static/js/main.8e8ba210.js"
+  ]
+}

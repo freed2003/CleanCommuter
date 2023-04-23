@@ -1,14 +1,15 @@
 const express = require('express');
 const { emission_data } = require('../data/emission_data');
 const dataController = require('../controllers/dataController');
+const path = require('path');
 
 let router = express.Router();
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  // return res.sendFile('../build/index.html');
-  return res.send('index');
-});
+// router.get('/', (req, res, next) => {
+//   return res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+//   // return res.send('index');
+// });
 
 router.get('/models', (req, res, next) => {
   const models = emission_data.map(model => `${model.Make} ${model.Model}`);
