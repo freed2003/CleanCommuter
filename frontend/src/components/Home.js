@@ -17,16 +17,18 @@ export default function Home() {
   const [endPos, setEndPos] = useState({ lat: 0, lng: 0 });
   const [models, setModels] = useState([]);
   const [results, setResults] = useState(undefined);
+  const [stats, setStats] = useState(undefined);
   const [route, setRoute] = useState({});
   const [selectModel, setChoice] = useState('');
 
   const handleButton = () => {
       let ljson = JSON.stringify(startPos)
       let rjson = JSON.stringify(endPos)
-      fetch(`/rankData?start=${ljson}&end=${rjson}`)
+      fetch(`/rankData?model=${selectModel}&start=${ljson}&end=${rjson}`)
       .then(res => res.json())
       .then(data => {
           setRoute({method: data.best_method});
+          setStats(data.stats);
           setResults(data.scores);
       });
   }
@@ -68,13 +70,14 @@ export default function Home() {
           options={models}
           sx={{ width: 300 }}
           renderInput={(params) => <TextField {...params} model='model' />}
-          onChange={(e) => {setChoice(e.target.value);}}
+          onChange={(e) => {setChoice(e.target.innerText);}}
         />
         </h>
         <img className="image" src={logo} alt="Logo" />
       </div>
       <div className='map'>
         <h className="mapChild">Select a route</h>
+        <h className="mapChild">(click endpoints)</h>
         <Mapcontainer className="mapChild" handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
         {/* <br/> */}
         <Button className="mapButton" onClick={handleButton} variant="contained" color="primary">
@@ -82,7 +85,7 @@ export default function Home() {
         </Button>
       </div>
 
-      {results != undefined && <Results results={results} />}
+      {results != undefined && <Results results={results} stats={stats} />}
       {/* <div className="bot"></div> */}
     </div>
   )

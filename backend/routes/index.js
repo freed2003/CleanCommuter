@@ -18,7 +18,8 @@ router.get('/models', (req, res, next) => {
 });
 
 router.get('/rankData', async (req, res, next) => {
-  let { start, end } = req.query;
+  console.log(req.query);
+  let { start, end, model } = req.query;
 
   try {
     start = JSON.parse(start);
@@ -30,10 +31,11 @@ router.get('/rankData', async (req, res, next) => {
   }
 
   try {
-    const { scores, best_method } = await dataController.rankData(start, end);
+    const { scores, best_method, stats } = await dataController.rankData(start, end, model);
     return res.json({
       scores: scores.slice(0, 15),
       best_method,
+      stats
     });
   } catch (err) {
     console.log(err);
