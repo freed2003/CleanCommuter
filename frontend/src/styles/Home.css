@@ -18,21 +18,21 @@ body {
     overflow-x: hidden;
 }
 
-.header{
-    position: absolute;
+.header {
+    /* position: absolute; */
     width: 100%;
-    height: 500px;
-    left: 0px;
-    top: 90px;
+    /* height: 500px; */
+    /* left: 0px;
+    top: 90px; */
     background: #D8FFFF;
 }
 
-.car{
-    position: absolute;
-    top: 604px;
+.car {
+    /* position: absolute; */
+    /* top: 604px; */
     height: 400px;
     width: 100%;
-    left: 0px;
+    /* left: 0px; */
     background: #ffffff;
 }
 
@@ -50,7 +50,7 @@ body {
     color: #74D4D4;
 }
 
-.image{
+.image {
     position: relative;
     max-width: 50%;
     max-height: 70%;
@@ -58,8 +58,8 @@ body {
     top: 0%;
 }
 
-.map{
-    position: absolute;
+.map {
+    /* position: absolute; */
     width: 100%;
     height: 750px;
     left: 0px;
@@ -68,7 +68,7 @@ body {
 }
 
 .results {
-    position: absolute;
+    /* position: absolute; */
     top: 1754px;
     height: 750px;
     width: 100%;

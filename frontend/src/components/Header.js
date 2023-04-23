@@ -2,7 +2,7 @@ import BannerImage from "../images/banner.png";
 
 const Header = () => {
   return (
-    <img src={BannerImage} width="1920" height="auto" className="header" />
+    <img src={BannerImage} width="auto" height="auto" className="header" />
   );
 };
 
