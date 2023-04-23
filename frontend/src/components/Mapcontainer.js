@@ -35,8 +35,6 @@ export function Mapcontainer(props) {
                 })
             })
         }
-        // var center = new props.google.maps.LatLng(defaultCenter.lat, defaultCenter.lng)
-        // console.log(center)
         var mapConfig = {
             zoom: 14,
             center: defaultCenter
@@ -55,30 +53,33 @@ export function Mapcontainer(props) {
 
     useEffect( () => {
         if (start === null) {
-            var marker = new props.google.maps.Marker({
-                position: props.startPos,
-            })
-            marker.setMap(map)
-            setStart(marker)
+            if (map !== null) {
+                var marker = new props.google.maps.Marker({
+                    position: props.startPos,
+                })
+                marker.setMap(map)
+                setStart(marker)
+            }
         } else {
             start.setPosition(props.startPos)
         }
-    }, [props.startPos])
+    }, [props.startPos, map])
 
 
     useEffect( () => {
         if (end === null) {
-            var marker = new props.google.maps.Marker({
-                position: props.startPos,
-                map
-            })
-            marker.setMap(map)
-            setEnd(marker)
+            if (map !== null) {
+                var marker = new props.google.maps.Marker({
+                    position: props.startPos,
+                    map
+                })
+                marker.setMap(map)
+                setEnd(marker)
+            }
         } else {
             end.setPosition(props.endPos)
-            console.log(end.getPosition().lat())
         }
-    }, [props.endPos])
+    }, [props.endPos, map])
 
     useEffect(
         () => {
@@ -93,6 +94,19 @@ export function Mapcontainer(props) {
             DR.setMap(map)
             if(JSON.stringify(props.route) != '{}') {
                 var path = props.route.route
+                let bounds = path.routes[0].bounds
+                let north = bounds.northeast.lat
+                let east = bounds.northeast.lng
+                let south = bounds.southwest.lat
+                let west = bounds.southwest.lng
+                console.log(path)
+                path.routes[0].bounds = {
+                    north: north,
+                    east: east,
+                    south: south,
+                    west: west
+                }
+                console.log(path)
                 DR.setDirections(path)
             }
         }
@@ -107,26 +121,6 @@ export function Mapcontainer(props) {
             <div id='map'>
                 Loading map...
             </div>
-        {/* <Map
-            ref={mapRef}
-            style={style}
-            containerStyle={containerStyle}
-            google={props.google}
-            onClick={props.handleClick}
-            center={defaultCenter}
-            centerAroundCurrentLocation
-        >
-            <Marker
-                title = "Start"
-                name = "start"
-                position={props.startPos}
-            />
-            <Marker
-                title = "End"
-                name = "end"
-                position={props.endPos}
-            />
-        </Map> */}
         </div>
     )
 }
