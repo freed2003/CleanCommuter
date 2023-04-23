@@ -3,6 +3,11 @@ const alt_emission_avgs = {
   "walking": 0,
 };
 
+const alt_price_averages = {
+  "bicycling": 0,
+  "walking": 0,
+}
+
 const emission_data = [
   {
     "": 0,
@@ -1421,31 +1426,31 @@ const emission_data = [
   {
     "": 202,
     "Make": "Tesla",
-    "Model": "X",
+    "Model": "Model X",
     "MSRP": 94990,
     "CO2_avg": 99
   },
   {
     "": 203,
     "Make": "Tesla",
-    "Model": "Y",
+    "Model": "Model Y",
     "MSRP": 52990,
     "CO2_avg": 87
   },
   {
     "": 204,
     "Make": "Tesla",
-    "Model": "S",
+    "Model": "Model S",
     "MSRP": 84990,
     "CO2_avg": 93
   },
   {
     "": 205,
     "Make": "Tesla",
-    "Model": 3,
+    "Model": 'Model 3',
     "MSRP": 41990,
     "CO2_avg": 81
   }
 ]
 
-module.exports = { alt_emission_avgs, emission_data};
+module.exports = { alt_emission_avgs, alt_price_averages, emission_data};
