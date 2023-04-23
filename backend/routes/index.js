@@ -22,8 +22,11 @@ router.get('/rankData', async (req, res, next) => {
   }
 
   try {
-    const ranked = await dataController.rankData(start, end);
-    return res.json(ranked.slice(0, 15));
+    const { scores, best_route } = await dataController.rankData(start, end);
+    return res.json({
+      scores: scores.slice(0, 15),
+      best_route,
+    });
   } catch (err) {
     console.log(err);
     next(new Error('failed to rank data'));

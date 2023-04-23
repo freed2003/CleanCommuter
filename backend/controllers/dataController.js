@@ -56,7 +56,13 @@ const rankData = async (start, end) => {
     return a[0] > b[0] ? 1 : -1;
   });
 
-  return res;
+  const best_method = res[0].method || 'driving';
+  const best_route = maps_data.find(method => method.method === best_method);
+
+  return { 
+    scores: res,
+    best_route,
+  };
 };
 
 module.exports = { rankData };
