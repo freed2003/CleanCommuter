@@ -1,9 +1,10 @@
 import { useState } from 'react';
-
 import Mapcontainer from "./Mapcontainer";
 import Results from "./Results";
-
 import '../styles/Home.css';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 export default function Home() {
   const [isStart, setisStart] = useState(true);
@@ -35,18 +36,24 @@ export default function Home() {
   return (
     <div className="home">
       <div className="header">
-
       </div>
-      <div className="car">
-        {/* <div className="car-title">
-                    <p>Vehicle Model</p>
-                </div> */}
-      </div>
-      <div className='map'>
-        <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} />
-        <button className='button' onClick={handleButton}>Click here to submit</button>
-      </div>
-      <Results results={results} />
-    </div>
-  )
+            <div className="car">
+                <h className="car-title">
+                    Vehicle model
+                </h>
+                    <Autocomplete
+                        disablePortal
+                        id="model-selector"
+                        /*options={}*/
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Movie" />}
+                    />
+            </div>
+            <div className='map'>
+                <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos}/>
+                <button className='button' onClick={handleButton}>Click here to submit</button>
+            </div>
+            <Results results={results} />
+        </div>
+    )
 }
