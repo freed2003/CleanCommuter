@@ -83,7 +83,7 @@ export default function Home() {
       </div>
 
       {results != undefined && <Results results={results} />}
-      <div className="bot"></div>
+      {/* <div className="bot"></div> */}
     </div>
   )
 }

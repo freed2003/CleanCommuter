@@ -19,7 +19,7 @@ export function Mapcontainer(props) {
   //   // margin: '50vh 0 0 0',
   // }
 
-    const [defaultCenter, setdefaultCenter] = useState({lat: 0, lng: 0});
+    const [defaultCenter, setdefaultCenter] = useState({lat: 34.0689, lng: -118.4452});
     const [map, setMap] = useState(null);
     const [DR, setDR] = useState(null)
     const [start, setStart] = useState(null)
@@ -27,15 +27,16 @@ export function Mapcontainer(props) {
 
 
     useEffect( () => {
-        if (navigator && navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(pos => {
-                const coords = pos.coords;
-                setdefaultCenter({
-                    lat: coords.latitude,
-                    lng: coords.longitude
-                })
-            })
-        }
+        // if (navigator && navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(pos => {
+        //         const coords = pos.coords;
+        //         console.log(coords);
+        //         setdefaultCenter({
+        //             lat: coords.latitude,
+        //             lng: coords.longitude
+        //         })
+        //     })
+        // }
         var mapConfig = {
             zoom: 14,
             center: defaultCenter
