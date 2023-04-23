@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat';
 }
 
 .button {
@@ -12,9 +13,9 @@ body {
     display: grid;
     position: relative;
     width: 100%;
-    height: 2500px;
+    height: 2400px;
     background: #FFFFFF;
-    font-family: 'Montserrat';
+    overflow-x: hidden;
 }
 
 .header{
@@ -29,7 +30,7 @@ body {
 .car{
     position: absolute;
     top: 604px;
-    height: 500px;
+    height: 400px;
     width: 100%;
     left: 0px;
     background: #ffffff;
@@ -40,7 +41,7 @@ body {
     width: 10%;
     height: 88px;
     left: 116px;
-    top: 30%;
+    top: 25%;
 
     font-style: normal;
     font-weight: 700;
@@ -49,18 +50,26 @@ body {
     color: #74D4D4;
 }
 
+.image{
+    position: relative;
+    max-width: 50%;
+    max-height: 70%;
+    left: 50%;
+    top: 0%;
+}
+
 .map{
     position: absolute;
     width: 100%;
     height: 750px;
     left: 0px;
-    top: 1104px;
+    top: 1004px;
     background: #E6FAFF;
 }
 
 .results {
     position: absolute;
-    top: 1854px;
+    top: 1754px;
     height: 750px;
     width: 100%;
     background: #ffffff;
