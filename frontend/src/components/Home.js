@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Mapcontainer from "./Mapcontainer";
+import Header from "./Header";
 import Results from "./Results";
 import '../styles/Home.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import logo from './../images/car.png'
-
 
 export default function Home() {
   const [isStart, setisStart] = useState(true);
@@ -24,7 +24,7 @@ export default function Home() {
       .then( res => res.json())
       .then( data => {
           setRoute(data.best_route)
-      })
+      });
   }
   /* fetch list of car models */
   useEffect(() => {
@@ -48,29 +48,29 @@ export default function Home() {
 
   return (
     <div className="home">
-        <div className="header">
-        </div>
-        <div className="car">
-            <h className="car-title">
-                Vehicle model
-                <Autocomplete
-                    disablePortal
-                    id="model-selector"
-                    options={models}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} model='model' />}
-                    onChange={(e) => {setChoice(e.target.value);}}
-                />
-            </h>
-            <img className="image" src={logo} alt="Logo" />
-        </div>  
-        <div className='map'>
-            {/* <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/> */}
-        </div>    
-        <div>
-            <button className='button' onClick={handleButton}>Click here to submit</button>
-        </div>
-        {results != undefined && <Results results={results} />}
+      <Header />
+      <div className="car">
+        <h className="car-title">
+          Vehicle model
+          <Autocomplete
+          disablePortal
+          id="model-selector"
+          options={models}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} model='model' />}
+          onChange={(e) => {setChoice(e.target.value);}}
+        />
+        </h>
+        <img className="image" src={logo} alt="Logo" />
+        
+      </div>
+      <div className='map'>
+          {/* <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/> */}
+      </div>
+      <div>
+          <button className='button' onClick={handleButton}>Click here to submit</button>
+      </div>
+      {results != undefined && <Results results={results} />}
     </div>
   )
 }

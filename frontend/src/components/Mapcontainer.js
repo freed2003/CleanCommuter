@@ -25,10 +25,10 @@ export function Mapcontainer(props) {
   }
 
   const containerStyle = {
-    display: 'flex',
-    position: 'static',
-    width: '100%',
-    height: '30%'
+    // display: 'flex',
+    // position: 'static',
+    // width: '100%',
+    // height: '30%'
   }
     
     const [defaultCenter, setdefaultCenter] = useState({lat: 0, lng: 0});
