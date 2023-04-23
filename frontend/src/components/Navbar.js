@@ -4,7 +4,9 @@ import logo from './../images/Clean_Commuters.svg'
 export default function Navbar() {
   return (
     <nav className='navbar'>
-      <img className="brand-logo" src={logo} alt="Logo"/>
+      <a href="/">
+        <img className="brand-logo" src={logo} alt="Logo"/>
+      </a>
       <input
         className='menutoggle'
         id="menu-toggle"
