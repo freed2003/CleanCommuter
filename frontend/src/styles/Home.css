@@ -7,30 +7,30 @@ body {
 }
 
 .button {
-  z-index: 102;
-  position: relative;
+  position: flex;
 }
 
 .home { 
     display: grid;
     position: relative;
     width: 100%;
-    height: 2400px;
+    height: 100%;
     background: #FFFFFF;
     overflow-x: hidden;
 }
 
 .header {
     /* position: absolute; */
-    width: 100%;
     /* height: 500px; */
     /* left: 0px;
     top: 90px; */
+    position: flex;
+    width: 100%;
     background: #D8FFFF;
 }
 
 .car {
-    /* position: absolute; */
+    position: flex;
     /* top: 604px; */
     height: 400px;
     width: 100%;
@@ -61,18 +61,27 @@ body {
 }
 
 .map {
-    /* position: relative; */
+    position: flex;
     width: 100%;
-    height: 750px;
-    left: 0px;
-    top: 1004px;
+    height: 500px;
+    /* left: 0px;
+    top: 1004px; */
     background: #E6FAFF;
 }
 
 .results {
-    /* position: relative; */
-    top: 1754px;
+    position: flex;
+    /* top: 1754px; */
     height: 750px;
     width: 100%;
     background: #ffffff;
+}
+
+.bot {
+    position: relative;
+    width: 100%;
+    height: 97px;
+    left: 0px;
+    /* top: 2787px; */
+    background: #82C097;
 }
