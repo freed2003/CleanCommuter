@@ -25,12 +25,7 @@ app.use((req, res, next) => {
 
 // error handler
 app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.message = err.message;
-  res.error = err;
-
-  // render the error page
-  res.status(err.status || 500).send();
+  res.status(err.status || 500).send(err.message);
 });
 
 module.exports = app;
