@@ -9,11 +9,11 @@ function App() {
   return (
     <Router>
       <Navbar />
-        <Routes>
-          <Route exact path='/' element={<Home/>} />
-          <Route path='/register' element={<Register/>} />
-          <Route path='/login' element={<Login/>} />
-        </Routes>
+      <Routes>
+        <Route exact path='/' element={<Home/>} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/login' element={<Login/>} />
+      </Routes>
     </Router>
   );
 }

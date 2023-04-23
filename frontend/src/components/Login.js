@@ -43,13 +43,16 @@ export default function Login() {
                         </Button>
                     </form>
 					<br/>
-					<Link to="/register">
-						No account? Sign up here
-        			</Link>
+                    <p>
+                        No account? Sign up
+                        <Link to="/register">
+                            here
+                        </Link>
+                    </p>
                     <br/>
                     <br/>
                     <Button /*onClick={logOut}*/ variant="contained" color="primary">
-                            Log out
+                        Log out
                     </Button>
                 </center>
             </div>
