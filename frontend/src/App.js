@@ -1,17 +1,20 @@
 import './styles/App.css';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Login from './components/Login'
+import Register from './components/Register'
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <div>
-        <Navbar/>
-      </div>
-      <main className='main'>
-        <Home/>
-      </main>
-    </div>
+    <Router>
+      <Navbar />
+        <Routes>
+          <Route exact path='/' element={<Home/>} />
+          <Route path='/register' element={<Register/>} />
+          <Route path='/login' element={<Login/>} />
+        </Routes>
+    </Router>
   );
 }
 
