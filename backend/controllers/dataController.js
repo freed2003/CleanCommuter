@@ -1,4 +1,4 @@
-const { emission_data, alt_emission_avgs } = require('../data/emission_data');
+const { emission_data, alt_emission_avgs, alt_price_averages } = require('../data/emission_data');
 const { getMapsData } = require('../utils/maps');
 
 const coefficientMatrix = [
@@ -8,10 +8,10 @@ const coefficientMatrix = [
 ];
 
 /* Accepts inputs, and reduces them into one metric for ranking */
-const transformer = (price, CO2_avg, distance, travel_time) => {
+const transformer = (price, CO2_total, travel_time) => {
   let sum = 0;
   sum += coefficientMatrix[0] * price;
-  sum += coefficientMatrix[1] * CO2_avg * distance;
+  sum += coefficientMatrix[1] * CO2_total;
   sum += coefficientMatrix[2] * (travel_time ** 2);
   return sum;
 };
@@ -26,11 +26,12 @@ const rankData = async (start, end) => {
     if (transport_mode.method === 'driving')
       return;
 
+    transport_mode.MSRP = alt_price_averages[transport_mode.method];
+    transport_mode.CO2_total = alt_emission_avgs[transport_mode.method] * transport_mode.distance;
     const metric = transformer(
-      0,
-      alt_emission_avgs[transport_mode.method],
-      transport_mode.distance,
-      transport_mode.travel_time
+      transport_mode.MSRP,
+      transport_mode.CO2_total,
+      transport_mode.travel_time,
     );
 
     res.push([metric, transport_mode]);
@@ -41,11 +42,12 @@ const rankData = async (start, end) => {
 
   /* individual car data */
   emission_data.forEach(car => {
+    car.CO2_total = car.CO2_avg * car_data.distance;
+    car.travel_time = car_data.travel_time;
     const metric = transformer(
       car.MSRP,             // USD
-      car.CO2_avg,          // g/km
-      car_data.distance,    // km
-      car_data.travel_time, // minutes
+      car.CO2_total,        // g
+      car.travel_time, // minutes
     );
 
     res.push([metric, car]);

@@ -58,11 +58,10 @@ body {
     background: #E6FAFF;
 }
 
-.result{
+.results {
     position: absolute;
     top: 2131px;
     height: 753px;
     width: 100%;
-    left: 0px;
     background: #ffffff;
 }

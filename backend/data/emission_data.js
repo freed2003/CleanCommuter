@@ -3,6 +3,11 @@ const alt_emission_avgs = {
   "walking": 0,
 };
 
+const alt_price_averages = {
+  "bicycling": 0,
+  "walking": 0,
+}
+
 const emission_data = [
   {
     "": 0,
@@ -1448,4 +1453,4 @@ const emission_data = [
   }
 ]
 
-module.exports = { alt_emission_avgs, emission_data};
+module.exports = { alt_emission_avgs, alt_price_averages, emission_data};
