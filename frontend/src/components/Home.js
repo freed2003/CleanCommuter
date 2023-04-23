@@ -1,14 +1,15 @@
 import { useState } from 'react';
 
-import Mapcontainer from "./Mapcontainer"
+import Mapcontainer from "./Mapcontainer";
+import Results from "./Results";
 
-import '../styles/Home.css'
+import '../styles/Home.css';
 
 export default function Home() {
-
     const [isStart, setisStart] = useState(true);
     const [startPos, setStartPos] = useState({lat: 0, lng: 0});
     const [endPos, setEndPos] = useState({lat: 0, lng: 0});
+    const [results, setResults] = useState();
 
     const handleButton = () => {
         let ljson = JSON.stringify(startPos)
@@ -45,9 +46,7 @@ export default function Home() {
                 <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos}/>
                 <button className='button' onClick={handleButton}>Click here to submit</button>
             </div>
-            <div className="result">
-
-            </div>
+            <Results results={results} />
         </div>
     )
 }
