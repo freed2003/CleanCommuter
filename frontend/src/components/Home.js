@@ -74,8 +74,10 @@ export default function Home() {
         <img className="image" src={logo} alt="Logo" />
       </div>
       <div className='map'>
-        <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
-        <Button onClick={handleButton} variant="contained" color="primary">
+        <h className="mapChild">Select a route</h>
+        <Mapcontainer className="mapChild" handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
+        {/* <br/> */}
+        <Button className="mapButton" onClick={handleButton} variant="contained" color="primary">
             SUBMIT
         </Button>
       </div>
