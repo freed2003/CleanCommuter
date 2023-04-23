@@ -62,10 +62,9 @@ export default function Home() {
         />
         </h>
         <img className="image" src={logo} alt="Logo" />
-        
       </div>
       <div className='map'>
-          {/* <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/> */}
+        {/* <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/> */}
       </div>
       <div>
           <button className='button' onClick={handleButton}>Click here to submit</button>

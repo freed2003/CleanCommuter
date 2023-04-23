@@ -59,7 +59,7 @@ body {
 }
 
 .map {
-    /* position: absolute; */
+    /* position: relative; */
     width: 100%;
     height: 750px;
     left: 0px;
@@ -68,7 +68,7 @@ body {
 }
 
 .results {
-    /* position: absolute; */
+    /* position: relative; */
     top: 1754px;
     height: 750px;
     width: 100%;

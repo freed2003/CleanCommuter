@@ -12,8 +12,8 @@ export default function Navbar() {
         <div className='menubutton'></div>
       </label>
       <ul>
-        <li>
-          <a href="/login">login</a>
+        <li style={{textDecoration: 'none'}}>
+          <a href="/about">About</a>
         </li>
       </ul>
     </nav>
