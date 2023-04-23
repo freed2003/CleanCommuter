@@ -2,11 +2,14 @@
     position: fixed;
     display: inline;
     width: 100%;
-    background-color: #5ddd65;
+    background-color: #ffffff;
     color: white;
-    top: 0;
+    top: 0px;
     z-index: 100;
-  }
+    height: 90px;
+    left: 0px;
+    top: 0px;
+}
   
   .menutoggle {
     display: none;

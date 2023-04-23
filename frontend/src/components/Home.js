@@ -32,12 +32,21 @@ export default function Home() {
     }
 
     return(
-        <div className='home'>
+        <div className="home">
+            <div className="header">
+
+            </div>
+            <div className="car">
+                {/* <div className="car-title">
+                    <p>Vehicle Model</p>
+                </div> */}
+            </div>
             <div className='map'>
                 <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos}/>
-            </div>
-            <div>
                 <button className='button' onClick={handleButton}>Click here to submit</button>
+            </div>
+            <div className="result">
+
             </div>
         </div>
     )
