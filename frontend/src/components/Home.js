@@ -9,7 +9,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 
 export default function Home() {
-  const [isStart, setisStart] = useState(true);
+  const [isStart, setisStart] = useState(false);
   const [startPos, setStartPos] = useState({ lat: 0, lng: 0 });
   const [endPos, setEndPos] = useState({ lat: 0, lng: 0 });
   const [models, setModels] = useState([]);
@@ -34,15 +34,20 @@ export default function Home() {
       });
   }, []);
 
-  const handleClick = (mapProps, map, clickEvent) => {
+  const handleClick = (clickEvent) => {
+    setisStart(true)
     let lat = clickEvent.latLng.lat()
     let lng = clickEvent.latLng.lng()
+    console.log(isStart)
+    
     if (isStart) {
+      
       setStartPos({ lat: lat, lng: lng })
     } else {
+      
       setEndPos({ lat: lat, lng: lng })
     }
-    setisStart(!isStart);
+    
   }
 
   return (
