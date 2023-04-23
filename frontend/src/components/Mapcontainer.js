@@ -93,23 +93,20 @@ export function Mapcontainer(props) {
     const drawRoute = () => {
         if (DR !== null) {
             DR.setMap(map)
-            if(JSON.stringify(props.route) != '{}') {
-                var path = props.route.route
-                let bounds = path.routes[0].bounds
-                let north = bounds.northeast.lat
-                let east = bounds.northeast.lng
-                let south = bounds.southwest.lat
-                let west = bounds.southwest.lng
-                console.log(path)
-                path.routes[0].bounds = {
-                    north: north,
-                    east: east,
-                    south: south,
-                    west: west
+            let DS = new props.google.maps.DirectionsService()
+            DS.route({
+                origin: props.startPos,
+                destination: props.endPos,
+                optimizeWaypoints: true,
+                travelMode: props.route.toUpperCase()
+            }, (res, stat) => {
+                if (stat === 'OK') {
+                    DR.setDirections(res)
+                } else {
+                    window.alert('Problem in showing direction due to ' + stat)
                 }
-                console.log(path)
-                DR.setDirections(path)
-            }
+            })
+            
         }
     }
 
