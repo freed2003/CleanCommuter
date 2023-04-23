@@ -5,15 +5,30 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import "../styles/Mapcontainer.css"
 
 export function Mapcontainer(props) {
+  // const style = {
+  //   width: '100%', 
+  //   height: '30%',
+  //   margin: 'auto',
+  //   position: 'relative',
+  // }
+
+  // const containerStyle = {
+  //   // display: 'block',
+  //   // height: '50vh',
+  //   // margin: '50vh 0 0 0',
+  // }
   const style = {
-    // width: '100%', 
-    // height: '30%',
-    // margin: 'auto'
+    width: '60%',
+    left: '30%',
+    height: '50%',
+    margin: 'auto'
   }
 
   const containerStyle = {
-    // display: 'block',
-    // height: '50vh',
+    display: 'flex',
+    position: 'static',
+    width: '100%',
+    height: '30%'
   }
 
   const [defaultCenter, setdefaultCenter] = useState({ lat: 0, lng: 0 });
