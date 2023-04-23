@@ -14,7 +14,17 @@ export default function Home() {
   const [endPos, setEndPos] = useState({ lat: 0, lng: 0 });
   const [models, setModels] = useState([]);
   const [results, setResults] = useState(undefined);
+  const [route, setRoute] = useState({});
 
+  const handleButton = () => {
+      let ljson = JSON.stringify(startPos)
+      let rjson = JSON.stringify(endPos)
+      fetch(`/rankData?start=${ljson}&end=${rjson}`)
+      .then( res => res.json())
+      .then( data => {
+          setRoute(data.best_route)
+      })
+  }
   /* fetch list of car models */
   useEffect(() => {
     fetch('http://localhost:5000/models')
@@ -23,16 +33,6 @@ export default function Home() {
         setModels(data.models);
       });
   }, []);
-
-  const handleButton = () => {
-    let ljson = JSON.stringify(startPos)
-    let rjson = JSON.stringify(endPos)
-    fetch(`/rankData?lat=${ljson}&lng=${rjson}`)
-      .then(res => res.json())
-      .then(data => {
-
-      })
-  }
 
   const handleClick = (mapProps, map, clickEvent) => {
     let lat = clickEvent.latLng.lat()
@@ -63,8 +63,10 @@ export default function Home() {
         
       </div>
       <div className='map'>
-        <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} />
-        <button className='button' onClick={handleButton}>Click here to submit</button>
+          <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
+      </div>
+      <div>
+          <button className='button' onClick={handleButton}>Click here to submit</button>
       </div>
       {results != undefined && <Results results={results} />}
     </div>

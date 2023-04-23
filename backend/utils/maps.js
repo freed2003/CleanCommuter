@@ -15,7 +15,7 @@ const getMapsData = async (start, end) => {
   const responses = await Promise.all(requests);
   const json = responses.map((response => response.json()));
   const data = await Promise.all(json);
-
+  console.log(data)
   let ret = [];
   data.forEach((method, i) => {
     ret.push({
