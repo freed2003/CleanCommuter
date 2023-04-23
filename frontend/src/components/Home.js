@@ -74,14 +74,14 @@ export default function Home() {
         <img className="image" src={logo} alt="Logo" />
       </div>
       <div className='map'>
+        <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
         <Button onClick={handleButton} variant="contained" color="primary">
             SUBMIT
         </Button>
-        <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
       </div>
 
       {results != undefined && <Results results={results} />}
-      <div className="bot"></div>
+      {/* <div className="bot"></div> */}
     </div>
   )
 }

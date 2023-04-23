@@ -4,7 +4,7 @@ const { getMapsData } = require('../utils/maps');
 const coefficientMatrix = [
   3, // price weight
   5, // emission weight
-  3, // time weight
+  20, // time weight
 ];
 
 /* Accepts inputs, and reduces them into one metric for ranking */

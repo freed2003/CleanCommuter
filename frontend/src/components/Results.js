@@ -12,6 +12,14 @@ const table_styling = {
   margin: '3rem auto',
 };
 
+const roundTwo = (num) => {
+  return +(Math.round(num + "e+2")  + "e-2");
+};
+
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 const Results = (props) => {
   return (
     <div className='results'>
@@ -36,9 +44,9 @@ const Results = (props) => {
                   {row[1].method || 
                   (`${row[1].Make} ${row[1].Model}`)}
                 </TableCell>
-                <TableCell align="right">{row[1].CO2_total} grams</TableCell>
-                <TableCell align="right">{row[1].travel_time} minutes</TableCell>
-                <TableCell align="right">${row[1].MSRP}</TableCell>
+                <TableCell align="right">{numberWithCommas(roundTwo(row[1].CO2_total))} grams</TableCell>
+                <TableCell align="right">{numberWithCommas(roundTwo(row[1].travel_time))} minutes</TableCell>
+                <TableCell align="right">${numberWithCommas(roundTwo(row[1].MSRP))}</TableCell>
               </TableRow>
             ))}
           </TableBody>
