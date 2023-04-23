@@ -5,7 +5,7 @@ import '../styles/Home.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-
+import logo from './../images/car.png'
 
 
 export default function Home() {
@@ -15,6 +15,7 @@ export default function Home() {
   const [models, setModels] = useState([]);
   const [results, setResults] = useState(undefined);
   const [route, setRoute] = useState({});
+  const [selectModel, setChoice] = useState('');
 
   const handleButton = () => {
       let ljson = JSON.stringify(startPos)
@@ -27,7 +28,7 @@ export default function Home() {
   }
   /* fetch list of car models */
   useEffect(() => {
-    fetch('http://localhost:5000/models')
+    fetch('http://localhost:3001/models')
       .then(res => res.json())
       .then(data => {
         setModels(data.models);
@@ -47,28 +48,29 @@ export default function Home() {
 
   return (
     <div className="home">
-      <div className="header">
-      </div>
-      <div className="car">
-        <h className="car-title">
-          Vehicle model
-          <Autocomplete
-          disablePortal
-          id="model-selector"
-          options={models}
-          sx={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} model='model' />}
-        />
-        </h>
-        
-      </div>
-      <div className='map'>
-          <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
-      </div>
-      <div>
-          <button className='button' onClick={handleButton}>Click here to submit</button>
-      </div>
-      {results != undefined && <Results results={results} />}
+        <div className="header">
+        </div>
+        <div className="car">
+            <h className="car-title">
+                Vehicle model
+                <Autocomplete
+                    disablePortal
+                    id="model-selector"
+                    options={models}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} model='model' />}
+                    onChange={(e) => {setChoice(e.target.value);}}
+                />
+            </h>
+            <img className="image" src={logo} alt="Logo" />
+        </div>  
+        <div className='map'>
+            {/* <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/> */}
+        </div>    
+        <div>
+            <button className='button' onClick={handleButton}>Click here to submit</button>
+        </div>
+        {results != undefined && <Results results={results} />}
     </div>
   )
 }
