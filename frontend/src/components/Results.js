@@ -6,51 +6,39 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function createData(
-  name,
-  calories,
-  fat,
-  carbs,
-  protein,
-) {
-  return { name, calories, fat, carbs, protein };
-}
+const table_styling = {
+  minWidth: '650',
+  width: '50vw',
+  margin: '3rem auto',
+};
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-const Results = () => {
+const Results = (props) => {
   return (
     <div className='results'>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <p></p>
+      <TableContainer sx={table_styling} component={Paper}>
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+              <TableCell>Transportation Method</TableCell>
+              <TableCell align="right">Total CO2 Emissions</TableCell>
+              <TableCell align="right">Travel Time</TableCell>
+              <TableCell align="right">Average Price</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {props.results.map(row => (
               <TableRow
-                key={row.name}
+                key={row[1].name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row[1].method || 
+                  (`${row[1].Make} ${row[1].Model}`)}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="right">{row[1].CO2_total} grams</TableCell>
+                <TableCell align="right">{row[1].travel_time} minutes</TableCell>
+                <TableCell align="right">${row[1].MSRP}</TableCell>
               </TableRow>
             ))}
           </TableBody>

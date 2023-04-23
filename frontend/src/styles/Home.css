@@ -11,14 +11,15 @@ body {
     display: grid;
     position: relative;
     width: 100%;
-    height: 2884px;
+    height: 2500px;
     background: #FFFFFF;
+    font-family: 'Montserrat';
 }
 
 .header{
     position: absolute;
     width: 100%;
-    height: 514px;
+    height: 500px;
     left: 0px;
     top: 90px;
     background: #D8FFFF;
@@ -27,42 +28,39 @@ body {
 .car{
     position: absolute;
     top: 604px;
-    height: 543px;
+    height: 500px;
     width: 100%;
     left: 0px;
     background: #ffffff;
 }
 
 .car-title{
-    position: absolute;
+    position: relative;
     width: 10%;
     height: 88px;
     left: 116px;
-    top: 550px;
+    top: 30%;
 
-    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
     line-height: 49px;
-
     color: #74D4D4;
 }
 
 .map{
     position: absolute;
     width: 100%;
-    height: 988px;
+    height: 750px;
     left: 0px;
-    top: 1143px;
+    top: 1104px;
     background: #E6FAFF;
 }
 
-.result{
+.results {
     position: absolute;
-    top: 2131px;
-    height: 753px;
+    top: 1854px;
+    height: 750px;
     width: 100%;
-    left: 0px;
     background: #ffffff;
 }
