@@ -5,14 +5,13 @@
 
 .mymapcontainer {
     display: flex;
-    position: static;
+    height: 50vh;
     width: 100%;
-    height: 30%
 }
 
 #map {
     width: 100%;
-    left: 30%;
-    height: 50%;
+    /* left: 10%; */
+    height: 100%;
     margin: auto;
 }

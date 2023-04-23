@@ -24,9 +24,10 @@ export default function Home() {
       let ljson = JSON.stringify(startPos)
       let rjson = JSON.stringify(endPos)
       fetch(`/rankData?start=${ljson}&end=${rjson}`)
-      .then( res => res.json())
-      .then( data => {
-          setRoute(data.best_method)
+      .then(res => res.json())
+      .then(data => {
+          setRoute(data.best_method);
+          setResults(data.scores);
       });
   }
   /* fetch list of car models */
