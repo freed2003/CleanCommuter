@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { GoogleApiWrapper } from 'google-maps-react';
 
+import { stylesarray } from "../styles/mapstyle.js"
 import "../styles/Mapcontainer.css"
 import { Container } from '@mui/material';
 
@@ -49,6 +50,8 @@ export function Mapcontainer(props) {
     useEffect( () => {
         if(map !== null) {
             map.addListener("click", props.handleClick)
+            console.log(stylesarray)
+            map.setOptions({styles: stylesarray})
         }
     }, [map])
 
@@ -92,21 +95,23 @@ export function Mapcontainer(props) {
 
     const drawRoute = () => {
         if (DR !== null) {
-            DR.setMap(map)
+            DR.setMap(null)
+            let DR1 = new props.google.maps.DirectionsRenderer()
+            DR1.setMap(map)
             let DS = new props.google.maps.DirectionsService()
             DS.route({
                 origin: props.startPos,
                 destination: props.endPos,
                 optimizeWaypoints: true,
-                travelMode: props.route.toUpperCase()
+                travelMode: props.route.method.toUpperCase()
             }, (res, stat) => {
                 if (stat === 'OK') {
-                    DR.setDirections(res)
+                    DR1.setDirections(res)
                 } else {
                     window.alert('Problem in showing direction due to ' + stat)
                 }
             })
-            
+            setDR(DR1)   
         }
     }
 
