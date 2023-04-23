@@ -18,6 +18,7 @@ export function Mapcontainer(props) {
   //   // height: '50vh',
   //   // margin: '50vh 0 0 0',
   // }
+
     const [defaultCenter, setdefaultCenter] = useState({lat: 0, lng: 0});
     const [map, setMap] = useState(null);
     const [DR, setDR] = useState(null)
