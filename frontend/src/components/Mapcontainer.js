@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { GoogleApiWrapper } from 'google-maps-react';
 
 import "../styles/Mapcontainer.css"
+import { Container } from '@mui/material';
 
 export function Mapcontainer(props) {
   // const style = {
@@ -17,20 +18,7 @@ export function Mapcontainer(props) {
   //   // height: '50vh',
   //   // margin: '50vh 0 0 0',
   // }
-  const style = {
-    width: '60%',
-    left: '30%',
-    height: '50%',
-    margin: 'auto'
-  }
 
-  const containerStyle = {
-    // display: 'flex',
-    // position: 'static',
-    // width: '100%',
-    // height: '30%'
-  }
-    
     const [defaultCenter, setdefaultCenter] = useState({lat: 0, lng: 0});
     const [map, setMap] = useState(null);
     const [DR, setDR] = useState(null)
@@ -39,27 +27,42 @@ export function Mapcontainer(props) {
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
                 const coords = pos.coords;
+                console.log(coords)
                 setdefaultCenter({
                     lat: coords.latitude,
                     lng: coords.longitude
                 })
             })
         }
-        var center = new props.google.maps.LatLng(defaultCenter.lat, defaultCenter.lng)
+        // var center = new props.google.maps.LatLng(defaultCenter.lat, defaultCenter.lng)
+        // console.log(center)
         var mapConfig = {
-            center: center
+            zoom: 14,
+            center: defaultCenter
         }
-        console.log(document.getElementById('map'))
-        setMap(new props.google.maps.Map(document.getElementById('map'), mapConfig))
-        setDR(new props.google.maps.DirectionsRenderer())
-        DR.setMap(map)
+        console.log(defaultCenter)
+        let temap = new props.google.maps.Map(document.getElementById('map'), mapConfig)
+        let temp1 = new props.google.maps.DirectionsRenderer()
+        setDR(temp1)
+        setMap(temap)
     }, []);
 
+    useEffect(
+        () => {
+            if (map !== null) {
+                map.panTo(defaultCenter)
+            }
+        }
+    , [defaultCenter])
 
     const drawRoute = () => {
-        if(JSON.stringify(props.route) != '{}') {
-            var path = props.route.route
-            DR.setDirections(path)
+        if (DR !== null) {
+            console.log(DR)
+            DR.setMap(map)
+            if(JSON.stringify(props.route) != '{}') {
+                var path = props.route.route
+                DR.setDirections(path)
+            }
         }
     }
 
@@ -68,7 +71,7 @@ export function Mapcontainer(props) {
     )
 
     return (
-        <div className='mapcontainer'>
+        <div className='mymapcontainer'>
             <div id='map'>
                 Loading map...
             </div>
