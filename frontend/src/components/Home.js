@@ -26,7 +26,7 @@ export default function Home() {
       fetch(`/rankData?start=${ljson}&end=${rjson}`)
       .then(res => res.json())
       .then(data => {
-          setRoute(data.best_method);
+          setRoute({method: data.best_method});
           setResults(data.scores);
       });
   }
