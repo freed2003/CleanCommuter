@@ -3,10 +3,13 @@ import Mapcontainer from "./Mapcontainer";
 import Header from "./Header";
 import Results from "./Results";
 import '../styles/Home.css';
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import logo from './../images/car.png'
+// import mapStyles from '../styles/Mapcontainer.css'
+import { Button } from "@mui/material";
+
 
 export default function Home() {
   const [isStart, setisStart] = useState(true);
@@ -71,10 +74,14 @@ export default function Home() {
         <img className="image" src={logo} alt="Logo" />
       </div>
       <div className='map'>
-          <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
-          <button className='button' onClick={handleButton}>Click here to submit</button>
+        <Button onClick={handleButton} variant="contained" color="primary">
+            SUBMIT
+        </Button>
+        <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
       </div>
+
       {results != undefined && <Results results={results} />}
+      <div className="bot"></div>
     </div>
   )
 }

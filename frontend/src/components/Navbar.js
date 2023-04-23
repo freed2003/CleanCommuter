@@ -1,5 +1,5 @@
 import "../styles/Navbar.css";
-import logo from './../images/CCLogo.svg'
+import logo from './../images/Clean_Commuters.svg'
 
 export default function Navbar() {
   return (
