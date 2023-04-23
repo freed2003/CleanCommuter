@@ -23,7 +23,7 @@ const rankData = async (start, end) => {
   /* alternative modes of transport to set */
   const maps_data = await getMapsData(start, end);
   maps_data.forEach(transport_mode => {
-    if (transport_mode.method === 'DRIVE')
+    if (transport_mode.method === 'driving')
       return;
 
     const metric = transformer(
@@ -37,7 +37,7 @@ const rankData = async (start, end) => {
   });
 
   /* filter car data */
-  const car_data = maps_data.find(transport_mode => transport_mode.method === 'DRIVE');
+  const car_data = maps_data.find(transport_mode => transport_mode.method === 'driving');
 
   /* individual car data */
   emission_data.forEach(car => {
