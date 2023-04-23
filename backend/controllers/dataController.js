@@ -58,12 +58,12 @@ const rankData = async (start, end) => {
     return a[0] > b[0] ? 1 : -1;
   });
 
-  const best_method = res[0].method || 'driving';
-  const best_route = maps_data.find(method => method.method === best_method);
+  const best_method = res[0][1].method || 'driving';
+  // const best_route = maps_data.find(method => method.method === best_method);
 
   return { 
     scores: res,
-    best_route,
+    best_method,
   };
 };
 

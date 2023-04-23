@@ -30,10 +30,10 @@ router.get('/rankData', async (req, res, next) => {
   }
 
   try {
-    const { scores, best_route } = await dataController.rankData(start, end);
+    const { scores, best_method } = await dataController.rankData(start, end);
     return res.json({
       scores: scores.slice(0, 15),
-      best_route,
+      best_method,
     });
   } catch (err) {
     console.log(err);
