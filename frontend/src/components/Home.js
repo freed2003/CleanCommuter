@@ -23,7 +23,7 @@ export default function Home() {
       fetch(`/rankData?start=${ljson}&end=${rjson}`)
       .then( res => res.json())
       .then( data => {
-          setRoute(data.best_route)
+          setRoute(data.best_method)
       });
   }
   /* fetch list of car models */
