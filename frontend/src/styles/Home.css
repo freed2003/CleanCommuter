@@ -4,7 +4,8 @@ body {
 }
 
 .button {
-    z-index: 102;
+  z-index: 102;
+  position: relative;
 }
 
 .home { 
