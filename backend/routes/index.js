@@ -1,4 +1,5 @@
 const express = require('express');
+const { emission_data } = require('../data/emission_data');
 const dataController = require('../controllers/dataController');
 
 let router = express.Router();
@@ -7,6 +8,13 @@ let router = express.Router();
 router.get('/', (req, res, next) => {
   // return res.sendFile('../build/index.html');
   return res.send('index');
+});
+
+router.get('/models', (req, res, next) => {
+  const models = emission_data.map(model => `${model.Make} ${model.Model}`);
+  return res.json({
+    models,
+  });
 });
 
 router.get('/rankData', async (req, res, next) => {
