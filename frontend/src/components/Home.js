@@ -27,7 +27,7 @@ export default function Home() {
   }
   /* fetch list of car models */
   useEffect(() => {
-    fetch('http://localhost:5000/models')
+    fetch('/models')
       .then(res => res.json())
       .then(data => {
         setModels(data.models);
@@ -62,9 +62,9 @@ export default function Home() {
         </h>
         
       </div>
-      <div className='map'>
+      {/* <div className='map'> */}
           <Mapcontainer handleClick={handleClick} startPos={startPos} endPos={endPos} route = {route}/>
-      </div>
+      {/* </div> */}
       <div>
           <button className='button' onClick={handleButton}>Click here to submit</button>
       </div>
