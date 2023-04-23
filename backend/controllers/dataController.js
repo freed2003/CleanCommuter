@@ -17,8 +17,9 @@ const transformer = (price, CO2_total, travel_time) => {
 };
 
 /* Accepts input data, and ranks transformer(data) in ascending order */
-const rankData = async (start, end) => {
-  const res = [];
+const rankData = async (start, end, model) => {
+  let res = [];
+  let stats;
 
   /* alternative modes of transport to set */
   const maps_data = await getMapsData(start, end);
@@ -50,6 +51,10 @@ const rankData = async (start, end) => {
       car.travel_time, // minutes
     );
 
+    if (`${car.Make} ${car.Model}` === model) {
+      stats = car;
+    }
+
     res.push([metric, car]);
   });
 
@@ -64,6 +69,7 @@ const rankData = async (start, end) => {
   return { 
     scores: res,
     best_method,
+    stats,
   };
 };
 

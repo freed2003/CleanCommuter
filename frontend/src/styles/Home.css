@@ -1,111 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .button {
   position: flex;
 }
 
-.home { 
-    display: grid;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: #FFFFFF;
+.home {
+  display: grid;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
 }
 
 .header {
-    /* position: absolute; */
-    /* height: 500px; */
-    /* left: 0px;
+  /* position: absolute; */
+  /* height: 500px; */
+  /* left: 0px;
     top: 90px; */
-    position: flex;
-    width: 100%;
-    background: #D8FFFF;
+  position: flex;
+  width: 100%;
+  background: #d8ffff;
 }
 
 .car {
-    position: flex;
-    /* top: 604px; */
-    height: 400px;
-    width: 100%;
-    /* left: 0px; */
-    background: #ffffff;
-    overflow-x: hidden;
+  position: flex;
+  /* top: 604px; */
+  height: 400px;
+  width: 100%;
+  /* left: 0px; */
+  background: #ffffff;
+  overflow-x: hidden;
 }
 
-.car-title{
-    position: relative;
-    width: 10%;
-    height: 88px;
-    left: 116px;
-    top: 25%;
+.car-title {
+  position: relative;
+  width: 10%;
+  height: 88px;
+  left: 116px;
+  top: 25%;
 
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 49px;
-    color: #74D4D4;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+  color: #74d4d4;
 }
 
 .image {
-    position: relative;
-    max-width: 50%;
-    max-height: 70%;
-    left: 50%;
-    top: 0%;
+  position: relative;
+  max-width: 50%;
+  max-height: 70%;
+  left: 50%;
+  top: 0%;
 }
 
 .map {
-    position: flex;
-    width: 100%;
-    height: 500px;
-    background: #E6FAFF;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  position: flex;
+  width: 100%;
+  height: 500px;
+  background: #e6faff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 49px;
-    color: #74D4D4;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+  color: #74d4d4;
 }
 
 .mapChild {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
 }
 
 .mapButton {
-    width: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    left: 47.5%;
+  width: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  left: 47.5%;
 }
 
 .results {
-    position: flex;
-    /* top: 1754px; */
-    height: 750px;
-    width: 100%;
-    background: #ffffff;
+  position: flex;
+  /* top: 1754px; */
+  height: 750px;
+  width: 100%;
+  background: #ffffff;
+  margin-top: 15rem;
 }
 
 .bot {
-    position: relative;
-    width: 100%;
-    height: 97px;
-    left: 0px;
-    /* top: 2787px; */
-    background: #82C097;
+  position: relative;
+  width: 100%;
+  height: 97px;
+  left: 0px;
+  /* top: 2787px; */
+  background: #82c097;
+}
+
+.stats {
+  text-align: center;
 }

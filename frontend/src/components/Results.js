@@ -13,7 +13,7 @@ const table_styling = {
 };
 
 const roundTwo = (num) => {
-  return +(Math.round(num + "e+2")  + "e-2");
+  return +(Math.round(num + "e+2") + "e-2");
 };
 
 const numberWithCommas = (x) => {
@@ -23,7 +23,12 @@ const numberWithCommas = (x) => {
 const Results = (props) => {
   return (
     <div className='results'>
-      <p></p>
+      <div className='stats'>
+        <p>Your Total CO2 Emissions:</p>
+        <p>{props.stats ? props.stats.CO2_total : 0} grams</p>
+        <br />
+        <h3>Top Modes of Transport for this route:</h3>
+      </div>
       <TableContainer sx={table_styling} component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -41,8 +46,8 @@ const Results = (props) => {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row[1].method || 
-                  (`${row[1].Make} ${row[1].Model}`)}
+                  {row[1].method ||
+                    (`${row[1].Make} ${row[1].Model}`)}
                 </TableCell>
                 <TableCell align="right">{numberWithCommas(roundTwo(row[1].CO2_total))} grams</TableCell>
                 <TableCell align="right">{numberWithCommas(roundTwo(row[1].travel_time))} minutes</TableCell>
